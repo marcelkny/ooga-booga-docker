@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  ## (dev) server
+  ## - start dev server with: docker compose up server
+  ## - stop with: docker compose down server
+  dev:
+    build:
+      context: ./.docker
+      dockerfile: Dockerfile
+    volumes:
+      - "./app:/app"
+    ports:
+      - "127.0.0.1:7860:7860"
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
